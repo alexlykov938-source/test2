@@ -30,7 +30,7 @@ class Visit extends Model
     {
         return $query
             ->whereDate('visited_at', $date)
-            ->selectRaw('strftime("%H", visited_at) as hour, COUNT(DISTINCT ip) as count')
+            ->selectRaw("strftime('%H', visited_at) as hour, COUNT(DISTINCT ip) as count")
             ->groupByRaw('strftime("%H", visited_at)')
             ->orderBy('hour');
     }
